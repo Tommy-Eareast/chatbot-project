@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+body {
+    margin: 0;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+@layer utilities {
+    .bg-app {
+        background-image: url("/src/assets/background.jpeg");
+        background-repeat: repeat;
+        background-size: cover;
+        background-position: center;
+    }
+}
