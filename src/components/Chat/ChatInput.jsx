@@ -1,24 +1,11 @@
 import { useState } from "react";
 
-export default function ChatInput({ messages, setChatMessages }) {
+export default function ChatInput({ activeId, messages, onSend }) {
     const [message, setMessage] = useState("");
 
     const handleSendMessage = () => {
         if (!message.trim()) return;
-
-        const newMessage = {
-            id: Date.now(),
-            text: message,
-            sender: "user",
-        };
-
-        const newResponse = {
-            id: Date.now() + 1,
-            text: "Bot response " + message,
-            sender: "bot",
-        };
-
-        setChatMessages([...messages, newMessage, newResponse]);
+        onSend(activeId, message);
         setMessage("");
     };
 
