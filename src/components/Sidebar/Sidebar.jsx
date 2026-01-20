@@ -1,14 +1,41 @@
-export default function Sidebar({ conversations, activeId, onSelect }) {
+import { useState } from "react";
+
+import ConversationList from "./Conversation/ConversationList";
+import Toolbar from "./Toolbar";
+
+export default function Sidebar({
+    conversations,
+    activeId,
+    onSelect,
+    onAddConversation,
+}) {
+    const [sidebarExpanded, setSidebarExpanded] = useState(true);
+
     return (
-        <div className="grow flex flex-col h-screen justify-between mx-auto max-w-4xl h-full bg-black/60">
-            {conversations.map((conversation) => (
-                <ConversationTab
-                    key={conversation.id}
-                    isActive={activeId === conversation.id}
-                    title={conversation.title}
-                    onClick={() => onSelect(conversation.id)}
-                />
-            ))}
+        <div
+            className={`flex flex-col ${sidebarExpanded && "min-w-3xs"} bg-white/20`}
+        >
+            {!sidebarExpanded ? (
+                <button
+                    className="btn"
+                    onClick={() => setSidebarExpanded(!sidebarExpanded)}
+                >
+                    {">"}
+                </button>
+            ) : (
+                <>
+                    <Toolbar
+                        activeId={activeId}
+                        onExpand={() => setSidebarExpanded(!sidebarExpanded)}
+                        onAddConversation={onAddConversation}
+                    />
+                    <ConversationList
+                        conversations={conversations}
+                        activeId={activeId}
+                        onSelect={onSelect}
+                    />
+                </>
+            )}
         </div>
     );
 }

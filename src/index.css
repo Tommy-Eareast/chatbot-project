@@ -7,12 +7,3 @@ body {
     min-width: 320px;
     min-height: 100vh;
 }
-
-@layer utilities {
-    .bg-app {
-        background-image: url("/src/assets/background.jpeg");
-        background-repeat: repeat;
-        background-size: cover;
-        background-position: center;
-    }
-}

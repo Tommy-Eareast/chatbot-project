@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ChatInput({ activeId, messages, onSend }) {
+export default function ChatInput({ activeId, onSend }) {
     const [message, setMessage] = useState("");
 
     const handleSendMessage = () => {
